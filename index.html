@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sebastián Cruz Sierra · Desarrollador Full Stack</title>
+  <meta name="description" content="Portafolio de Sebastián Cruz Sierra, estudiante de Ingeniería de Sistemas en la UPB. Full stack, backend y seguridad." />
+  <meta property="og:title" content="Sebastián Cruz Sierra · Desarrollador Full Stack" />
+  <meta property="og:description" content="Proyectos reales, certificados y forma de contacto directa." />
+  <meta name="theme-color" content="#0b0f1a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-2: #111827;
+      --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22d3ee;
+      --accent-2: #a78bfa;
+      --ok: #34d399;
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #f8fafc; --bg-2: #eef2f7; --card: rgba(15, 23, 42, 0.03);
+        --border: rgba(15, 23, 42, 0.1); --text: #0f172a; --muted: #475569;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b0f1a; --bg-2: #111827; --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.09); --text: #e5e7eb; --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; }
+    .wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
+    section { padding: 96px 0; position: relative; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+    .eyebrow { color: var(--accent); font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: .06em; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(28px, 4vw, 40px); margin: 8px 0 28px; }
+    .grad {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* Fondo animado */
+    .bg-glow {
+      position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(40vmax 40vmax at 15% 20%, rgba(34, 211, 238, .18), transparent 60%),
+        radial-gradient(45vmax 45vmax at 85% 30%, rgba(167, 139, 250, .16), transparent 60%),
+        radial-gradient(40vmax 40vmax at 50% 90%, rgba(52, 211, 153, .10), transparent 60%);
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      to { transform: translate3d(3vmax, -2vmax, 0) scale(1.05); }
+    }
+
+    /* Barra superior */
+    header.nav {
+      position: fixed; top: 0; inset-inline: 0; z-index: 50;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; font-family: "JetBrains Mono", monospace; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 22px; font-size: 15px; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-tools { display: flex; gap: 10px; align-items: center; }
+    .btn-lang {
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+      padding: 6px 12px; border-radius: 999px; cursor: pointer; font: inherit; font-size: 13px;
+    }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* Hero */
+    .hero { min-height: 100svh; display: flex; align-items: center; padding-top: 120px; }
+    .hero h1 { font-size: clamp(40px, 7vw, 84px); font-weight: 800; margin: 14px 0 18px; }
+    .hero p.lead { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 640px; }
+    .status {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px;
+      border: 1px solid var(--border); border-radius: 999px; background: var(--card);
+      font-size: 14px; color: var(--muted);
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2s infinite; }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px;
+      font-weight: 600; border: 1px solid var(--border); background: var(--card); transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .btn.primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #06101a; border: none;
+    }
+    .terminal {
+      margin-top: 44px; max-width: 640px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--bg-2); overflow: hidden; box-shadow: 0 30px 80px -30px rgba(34, 211, 238, .25);
+    }
+    .term-bar { display: flex; gap: 7px; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    .term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #ef4444; }
+    .term-bar i:nth-child(2) { background: #f59e0b; } .term-bar i:nth-child(3) { background: var(--ok); }
+    .term-body { padding: 18px 20px; font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--muted); white-space: pre-wrap; min-height: 210px; }
+    .term-body b { color: var(--ok); font-weight: 500; }
+    .term-body em { color: var(--accent); font-style: normal; }
+    .caret { display: inline-block; width: 8px; height: 1em; background: var(--accent); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Tarjetas */
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 26px; transition: transform .3s, border-color .3s, box-shadow .3s; position: relative; overflow: hidden;
+    }
+    .card:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--accent) 50%, transparent); box-shadow: 0 24px 60px -30px rgba(34, 211, 238, .4); }
+    .card h3 { font-size: 21px; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 15px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+    .tag { font-family: "JetBrains Mono", monospace; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .links { display: flex; gap: 16px; font-size: 14px; font-weight: 600; margin-top: 8px; }
+    .links a { color: var(--accent); }
+    .badge { display: inline-block; margin-bottom: 12px; font-size: 12px; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent-2) 20%, transparent); color: var(--accent-2); }
+    .muted-note { color: var(--muted); font-size: 14px; font-style: italic; margin-top: 8px; }
+
+    /* Habilidades */
+    .skills { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .skill-group h4 { font-size: 16px; margin-bottom: 12px; color: var(--accent); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 7px 12px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); font-size: 14px; }
+
+    /* Línea de tiempo */
+    .timeline { display: grid; gap: 18px; max-width: 760px; }
+    .item { border-left: 2px solid var(--border); padding: 4px 0 4px 24px; position: relative; }
+    .item::before {
+      content: ""; position: absolute; left: -7px; top: 10px; width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px var(--bg);
+    }
+    .item small { color: var(--accent); font-family: "JetBrains Mono", monospace; font-size: 13px; }
+    .item h3 { font-size: 19px; margin: 4px 0; }
+    .item p { color: var(--muted); font-size: 15px; }
+
+    /* Sobre mí */
+    .about { display: grid; gap: 40px; grid-template-columns: 1.1fr .9fr; align-items: center; }
+    .about p { color: var(--muted); font-size: 17px; margin-bottom: 16px; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat { padding: 22px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); }
+    .stat strong { font-size: 30px; display: block; font-weight: 800; }
+    .stat span { color: var(--muted); font-size: 14px; }
+    @media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
+
+    /* Contacto */
+    .contact { text-align: center; }
+    .contact p { color: var(--muted); max-width: 560px; margin: 0 auto 30px; font-size: 17px; }
+    .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+    footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; text-align: center; }
+
+    /* Reveal al hacer scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 520px) {
+      section { padding: 72px 0; }
+      .hero { padding-top: 100px; }
+      .stat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a href="#inicio" class="logo">scb<span>.</span>dev</a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+        <a href="#sobre-mi" data-es="Sobre mí" data-en="About">Sobre mí</a>
+        <a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a>
+        <a href="#trayectoria" data-es="Trayectoria" data-en="Journey">Trayectoria</a>
+        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+      </nav>
+      <div class="nav-tools">
+        <button class="btn-lang" id="lang" aria-label="Cambiar idioma">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <div class="status reveal"><span class="dot"></span>
+          <span data-es="Disponible para prácticas y primer empleo" data-en="Open to internships and first job">Disponible para prácticas y primer empleo</span>
+        </div>
+        <h1 class="reveal">Sebastián <span class="grad">Cruz</span> Sierra</h1>
+        <p class="lead reveal"
+           data-es="Desarrollador full stack en formación, estudiante de Ingeniería de Sistemas en la UPB. Construyo APIs sólidas, interfaces claras y sistemas pensados desde la seguridad."
+           data-en="Full stack developer in training, Systems Engineering student at UPB. I build solid APIs, clear interfaces and systems designed with security in mind.">
+          Desarrollador full stack en formación, estudiante de Ingeniería de Sistemas en la UPB. Construyo APIs sólidas, interfaces claras y sistemas pensados desde la seguridad.
+        </p>
+        <div class="cta reveal">
+          <a class="btn primary" href="#proyectos" data-es="Ver proyectos →" data-en="View projects →">Ver proyectos →</a>
+          <a class="btn" href="#contacto" data-es="Contáctame" data-en="Get in touch">Contáctame</a>
+        </div>
+
+        <div class="terminal reveal" aria-hidden="true">
+          <div class="term-bar"><i></i><i></i><i></i></div>
+          <div class="term-body" id="term"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+      <div class="wrap">
+        <span class="eyebrow reveal" data-es="// proyectos" data-en="// projects">// proyectos</span>
+        <h2 class="reveal" data-es="Lo que he construido" data-en="What I have built">Lo que he construido</h2>
+
+        <div class="grid">
+          <article class="card reveal">
+            <span class="badge" data-es="Backend · Arquitectura" data-en="Backend · Architecture">Backend · Arquitectura</span>
+            <h3>Ecosistema Veterinaria &amp; Tienda de Mascotas</h3>
+            <p data-es="Solución en C# .NET 8 con 11 microservicios, Clean Architecture, DDD y mensajería asíncrona con Kafka. Cada servicio tiene su propia base de datos."
+               data-en="C# .NET 8 solution with 11 microservices, Clean Architecture, DDD and async messaging with Kafka. Each service owns its database.">Solución en C# .NET 8 con 11 microservicios, Clean Architecture, DDD y mensajería asíncrona con Kafka. Cada servicio tiene su propia base de datos.</p>
+            <div class="tag-row">
+              <span class="tag">C#</span><span class="tag">.NET 8</span><span class="tag">Kafka</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Docker</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/SCruzBDev/Proyecto_FInal_Arquitectura_Software" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <span class="badge" data-es="Cliente real" data-en="Real client">Cliente real</span>
+            <h3>Web para Nadia FX, Caracterización</h3>
+            <p data-es="Sitio para una caracterizadora en Madrid con portafolio, servicios, reserva de citas por WhatsApp y un panel privado para gestionar la disponibilidad."
+               data-en="Website for a makeup artist in Madrid: portfolio, services, WhatsApp booking flow and a private panel to manage availability.">Sitio para una caracterizadora en Madrid con portafolio, servicios, reserva de citas por WhatsApp y un panel privado para gestionar la disponibilidad.</p>
+            <div class="tag-row">
+              <span class="tag">TypeScript</span><span class="tag">Astro</span><span class="tag">Hono</span><span class="tag">Zod</span><span class="tag">pnpm</span><span class="tag">Vitest</span>
+            </div>
+            <p class="muted-note" data-es="Repositorio privado. Código disponible bajo solicitud." data-en="Private repository. Code available on request.">Repositorio privado. Código disponible bajo solicitud.</p>
+          </article>
+
+          <article class="card reveal">
+            <span class="badge" data-es="Certificación IBM" data-en="IBM certification">Certificación IBM</span>
+            <h3 data-es="App web Django con evaluaciones" data-en="Django web app with assessments">App web Django con evaluaciones</h3>
+            <p data-es="Proyecto final del curso de IBM: una aplicación web en Django con base de datos SQLite, extendida con un módulo de evaluaciones y modelo relacional."
+               data-en="Final project from the IBM course: a Django web app with SQLite, extended with an assessment module and relational model.">Proyecto final del curso de IBM: una aplicación web en Django con base de datos SQLite, extendida con un módulo de evaluaciones y modelo relacional.</p>
+            <div class="tag-row">
+              <span class="tag">Python</span><span class="tag">Django</span><span class="tag">SQLite</span><span class="tag">HTML</span><span class="tag">CSS</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/SCruzBDev/online-course-app" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi">
+      <div class="wrap about">
+        <div class="reveal">
+          <span class="eyebrow" data-es="// sobre mí" data-en="// about">// sobre mí</span>
+          <h2 data-es="Ingeniería, código y curiosidad" data-en="Engineering, code and curiosity">Ingeniería, código y curiosidad</h2>
+          <p data-es="Soy estudiante de Ingeniería de Sistemas en la UPB, en Medellín. Me interesan el desarrollo full stack y la ciberseguridad, y mi meta es trabajar como pentester en el futuro."
+             data-en="I am a Systems Engineering student at UPB, in Medellín. I am interested in full stack development and cybersecurity, and my goal is to work as a pentester in the future.">Soy estudiante de Ingeniería de Sistemas en la UPB, en Medellín. Me interesan el desarrollo full stack y la ciberseguridad, y mi meta es trabajar como pentester en el futuro.</p>
+          <p data-es="También me gusta el hardware y la electrónica: armo proyectos personales porque entender cómo funciona algo por dentro me motiva a construir mejor software."
+             data-en="I also enjoy hardware and electronics: I build personal projects because understanding how things work underneath helps me build better software.">También me gusta el hardware y la electrónica: armo proyectos personales porque entender cómo funciona algo por dentro me motiva a construir mejor software.</p>
+        </div>
+        <div class="stat-grid reveal">
+          <div class="stat"><strong>11</strong><span data-es="microservicios en un proyecto" data-en="microservices in one project">microservicios en un proyecto</span></div>
+          <div class="stat"><strong>+20</strong><span data-es="repositorios en GitHub" data-en="repositories on GitHub">repositorios en GitHub</span></div>
+          <div class="stat"><strong>1</strong><span data-es="sitio web en producción para un cliente" data-en="website in production for a client">sitio web en producción para un cliente</span></div>
+          <div class="stat"><strong>IBM</strong><span data-es="certificación en Coursera" data-en="certification on Coursera">certificación en Coursera</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+      <div class="wrap">
+        <span class="eyebrow reveal" data-es="// habilidades" data-en="// skills">// habilidades</span>
+        <h2 class="reveal" data-es="Tecnologías que uso" data-en="Technologies I use">Tecnologías que uso</h2>
+        <div class="skills reveal">
+          <div class="skill-group card">
+            <h4 data-es="Frontend" data-en="Frontend">Frontend</h4>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Astro</span></div>
+          </div>
+          <div class="skill-group card">
+            <h4 data-es="Backend" data-en="Backend">Backend</h4>
+            <div class="chips"><span class="chip">C# / .NET 8</span><span class="chip">Python</span><span class="chip">Django</span><span class="chip">Hono</span><span class="chip">Zod</span></div>
+          </div>
+          <div class="skill-group card">
+            <h4 data-es="Datos y mensajería" data-en="Data and messaging">Datos y mensajería</h4>
+            <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">SQLite</span><span class="chip">Redis</span><span class="chip">Kafka</span></div>
+          </div>
+          <div class="skill-group card">
+            <h4 data-es="Herramientas" data-en="Tools">Herramientas</h4>
+            <div class="chips"><span class="chip">Git / GitHub</span><span class="chip">Docker</span><span class="chip">pnpm</span><span class="chip">Vitest</span><span class="chip">Linux (Arch)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAYECTORIA -->
+    <section id="trayectoria">
+      <div class="wrap">
+        <span class="eyebrow reveal" data-es="// trayectoria" data-en="// journey">// trayectoria</span>
+        <h2 class="reveal" data-es="Experiencia y formación" data-en="Experience and education">Experiencia y formación</h2>
+        <div class="timeline">
+          <div class="item reveal">
+            <small data-es="Proyecto para cliente" data-en="Client project">Proyecto para cliente</small>
+            <h3 data-es="Desarrollo web · Nadia FX" data-en="Web development · Nadia FX">Desarrollo web · Nadia FX</h3>
+            <p data-es="Diseño y desarrollo del sitio web de Nadia FX, Caracterización: front-end, API, reserva de citas y panel de administración."
+               data-en="Design and development of the Nadia FX, Caracterización website: front end, API, booking flow and admin panel.">Diseño y desarrollo del sitio web de Nadia FX, Caracterización: front-end, API, reserva de citas y panel de administración.</p>
+          </div>
+          <div class="item reveal">
+            <small data-es="Certificación" data-en="Certification">Certificación</small>
+            <h3 data-es="Certificado profesional IBM" data-en="IBM professional certificate">Certificado profesional IBM</h3>
+            <p data-es="Formación en Coursera con proyecto final de aplicación web." data-en="Coursera training with a final web application project.">Formación en Coursera con proyecto final de aplicación web.</p>
+          </div>
+          <div class="item reveal">
+            <small data-es="En curso" data-en="In progress">En curso</small>
+            <h3 data-es="Ingeniería de Sistemas · UPB" data-en="Systems Engineering · UPB">Ingeniería de Sistemas · UPB</h3>
+            <p data-es="Universidad Pontificia Bolivariana, Medellín. Próximo a graduarme." data-en="Pontificia Bolivariana University, Medellín. Graduating soon.">Universidad Pontificia Bolivariana, Medellín. Próximo a graduarme.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact">
+      <div class="wrap reveal">
+        <span class="eyebrow" data-es="// contacto" data-en="// contact">// contacto</span>
+        <h2 data-es="¿Hablamos?" data-en="Let's talk">¿Hablamos?</h2>
+        <p data-es="Si buscas a alguien con ganas de aprender rápido, entregar con calidad y crecer en el equipo, escríbeme."
+           data-en="If you are looking for someone eager to learn fast, deliver with quality and grow with the team, reach out.">Si buscas a alguien con ganas de aprender rápido, entregar con calidad y crecer en el equipo, escríbeme.</p>
+        <div class="contact-grid">
+          <a class="btn primary" href="mailto:sebastian.211105@hotmail.com">sebastian.211105@hotmail.com</a>
+          <a class="btn" href="https://wa.me/573053679355" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="https://www.linkedin.com/in/sebasti%C3%A1n-cruz-685040399/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/SCruzBDev" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://coursera.org/share/bf8971dcebb90fd5f163b115b15a0ece" target="_blank" rel="noopener" data-es="Certificado" data-en="Certificate">Certificado</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="year"></span> Sebastián Cruz Sierra · <span data-es="Hecho a mano, sin frameworks pesados." data-en="Handcrafted, no heavy frameworks.">Hecho a mano, sin frameworks pesados.</span></p>
+    </div>
+  </footer>
+
+  <script>
+    // Idioma
+    const btnLang = document.getElementById('lang');
+    let lang = (navigator.language || 'es').startsWith('en') ? 'en' : 'es';
+    function setLang(l) {
+      lang = l;
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.textContent = el.dataset[l] ?? el.textContent;
+      });
+      btnLang.textContent = l === 'es' ? 'EN' : 'ES';
+      try { localStorage.setItem('lang', l); } catch (_) {}
+      document.title = l === 'es'
+        ? 'Sebastián Cruz Sierra · Desarrollador Full Stack'
+        : 'Sebastián Cruz Sierra · Full Stack Developer';
+    }
+    btnLang.addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es'));
+    let saved = null; try { saved = localStorage.getItem('lang'); } catch (_) {}
+    setLang(saved || lang);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Revelar al hacer scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Terminal animada
+    const lines = [
+      { cmd: 'whoami', out: 'sebastian-cruz · full stack · UPB' },
+      { cmd: 'cat stack.txt', out: 'C#/.NET · Python/Django · TypeScript/Astro · PostgreSQL · Docker' },
+      { cmd: 'ls proyectos/', out: '> ecosistema-veterinaria\n> web-nadia-fx\n> app-django-ibm' },
+      { cmd: 'echo $ESTADO', out: 'open_to_work = true' }
+    ];
+    const term = document.getElementById('term');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      term.innerHTML = lines.map(l => `<b>$</b> ${l.cmd}\n${l.out}`).join('\n\n');
+    } else {
+      let idx = 0;
+      const run = () => {
+        if (idx >= lines.length) {
+          const c = document.createElement('span'); c.className = 'caret'; term.appendChild(c); return;
+        }
+        const l = lines[idx++];
+        const p = document.createElement('div');
+        p.innerHTML = '<b>$</b> ';
+        term.appendChild(p);
+        const s = document.createElement('span');
+        p.appendChild(s);
+        let i = 0;
+        const typeCmd = () => {
+          s.textContent = l.cmd.slice(0, i);
+          if (i++ < l.cmd.length) return setTimeout(typeCmd, 45);
+          const o = document.createElement('div');
+          o.innerHTML = '<em></em>';
+          term.appendChild(o);
+          o.firstChild.textContent = l.out;
+          setTimeout(run, 500);
+        };
+        typeCmd();
+      };
+      setTimeout(run, 400);
+    }
+  </script>
+</body>
+</html>
