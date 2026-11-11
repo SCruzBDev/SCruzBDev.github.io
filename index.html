@@ -8,6 +8,7 @@
   <meta property="og:title" content="Sebastián Cruz Sierra · Desarrollador Full Stack" />
   <meta property="og:description" content="Proyectos reales, certificados y forma de contacto directa." />
   <meta name="theme-color" content="#0b0f1a" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -217,6 +218,7 @@
         <div class="cta reveal">
           <a class="btn primary" href="#proyectos" data-es="Ver proyectos →" data-en="View projects →">Ver proyectos →</a>
           <a class="btn" href="#contacto" data-es="Contáctame" data-en="Get in touch">Contáctame</a>
+          <a class="btn cv-link" href="cv/Sebastian-Cruz-CV-ES.pdf" download data-es="Descargar hoja de vida" data-en="Download résumé">Descargar hoja de vida</a>
         </div>
 
         <div class="terminal reveal" aria-hidden="true">
@@ -301,11 +303,11 @@
         <div class="skills reveal">
           <div class="skill-group card">
             <h4 data-es="Frontend" data-en="Frontend">Frontend</h4>
-            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Astro</span></div>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Astro</span></div>
           </div>
           <div class="skill-group card">
             <h4 data-es="Backend" data-en="Backend">Backend</h4>
-            <div class="chips"><span class="chip">C# / .NET 8</span><span class="chip">Python</span><span class="chip">Django</span><span class="chip">Hono</span><span class="chip">Zod</span></div>
+            <div class="chips"><span class="chip">C# / .NET 8</span><span class="chip">Python</span><span class="chip">Django</span><span class="chip">Flask</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Hono</span></div>
           </div>
           <div class="skill-group card">
             <h4 data-es="Datos y mensajería" data-en="Data and messaging">Datos y mensajería</h4>
@@ -333,8 +335,9 @@
           </div>
           <div class="item reveal">
             <small data-es="Certificación" data-en="Certification">Certificación</small>
-            <h3 data-es="Certificado profesional IBM" data-en="IBM professional certificate">Certificado profesional IBM</h3>
-            <p data-es="Formación en Coursera con proyecto final de aplicación web." data-en="Coursera training with a final web application project.">Formación en Coursera con proyecto final de aplicación web.</p>
+            <h3>IBM Full Stack Software Developer</h3>
+            <p data-es="Certificado profesional en Coursera: Git, React, Node.js y Express, Python con Flask y Django, y despliegue en la nube."
+               data-en="Professional certificate on Coursera: Git, React, Node.js and Express, Python with Flask and Django, and cloud deployment.">Certificado profesional en Coursera: Git, React, Node.js y Express, Python con Flask y Django, y despliegue en la nube.</p>
           </div>
           <div class="item reveal">
             <small data-es="En curso" data-en="In progress">En curso</small>
@@ -358,6 +361,7 @@
           <a class="btn" href="https://www.linkedin.com/in/sebasti%C3%A1n-cruz-685040399/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/SCruzBDev" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://coursera.org/share/bf8971dcebb90fd5f163b115b15a0ece" target="_blank" rel="noopener" data-es="Certificado" data-en="Certificate">Certificado</a>
+          <a class="btn cv-link" href="cv/Sebastian-Cruz-CV-ES.pdf" download data-es="Hoja de vida (PDF)" data-en="Résumé (PDF)">Hoja de vida (PDF)</a>
         </div>
       </div>
     </section>
@@ -380,6 +384,9 @@
         el.textContent = el.dataset[l] ?? el.textContent;
       });
       btnLang.textContent = l === 'es' ? 'EN' : 'ES';
+      document.querySelectorAll('.cv-link').forEach(a => {
+        a.href = `cv/Sebastian-Cruz-CV-${l.toUpperCase()}.pdf`;
+      });
       try { localStorage.setItem('lang', l); } catch (_) {}
       document.title = l === 'es'
         ? 'Sebastián Cruz Sierra · Desarrollador Full Stack'
