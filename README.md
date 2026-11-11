@@ -5,7 +5,9 @@ Portafolio personal: desarrollador full stack en formación, estudiante de Ingen
 **Sitio:** https://scruzbdev.github.io
 
 - Sitio estático en un solo archivo (`index.html`), sin dependencias ni compilación.
-- Español e inglés, modo claro y oscuro, diseño adaptable a celular.
+- Diseño inspirado en *Serial Experiments Lain*: fondo negro con scanlines, postes de luz y sombras de puntos rojos, secciones como `layer:01…07`.
+- Sección dedicada a Linux (Arch, Hyprland, fish) con terminal animada.
+- Español e inglés, diseño adaptable a celular y respeto a `prefers-reduced-motion`.
 - Hoja de vida descargable en PDF (`cv/`), en español e inglés.
 - Publicado con GitHub Pages.
 
