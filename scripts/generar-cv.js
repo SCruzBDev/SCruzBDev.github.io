@@ -130,12 +130,12 @@ function html(t, lang) {
   @page { size: A4; margin: 14mm 15mm 12mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #111827; font-size: 10pt; line-height: 1.4; }
-  header { border-bottom: 2px solid #0891b2; padding-bottom: 10px; margin-bottom: 12px; }
+  header { border-bottom: 2px solid #0000f2; padding-bottom: 10px; margin-bottom: 12px; }
   h1 { font-size: 22pt; letter-spacing: -0.02em; }
-  .sub { color: #0891b2; font-weight: 600; font-size: 12pt; margin: 2px 0 6px; }
+  .sub { color: #0000f2; font-weight: 600; font-size: 12pt; margin: 2px 0 6px; }
   .contact { color: #374151; font-size: 9.2pt; display: flex; flex-wrap: wrap; gap: 4px 14px; }
   .contact a { color: inherit; text-decoration: none; }
-  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: .08em; color: #0891b2; margin: 13px 0 6px; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: .08em; color: #0000f2; margin: 13px 0 6px; }
   .row { display: flex; justify-content: space-between; gap: 10px; }
   .t { font-weight: 700; }
   .m { color: #4b5563; font-size: 9.4pt; }
